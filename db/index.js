@@ -18,7 +18,7 @@ export function writeDBFile(dbName, data) {
 export async function updateDB(content) {
     const csgo = await readDBFile("csgo_rank_distribution");
     const calculatedElos = calculateElos(content, csgo);
-    writeDBFile("current_data", {eloPerRank: calculatedElos});
+    writeDBFile("current_data", {eloPerRank: calculatedElos, timestamp: content.timestamp});
 
     let hist = { ...HISTORIC_DATA };
     

@@ -1,11 +1,25 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  
+  const [globalElo, setGlobalElo] = useState(0);
+  const [globalEloText, setGlobalEloText] = useState("");
+  const [lastUpdated, setLastUpdated] = useState('');
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/global')
+      .then((response) => response.json())
+      .then((data) => {
+        setGlobalElo(data.elo);
+        setLastUpdated(new Date(parseInt(data.timestamp)).toLocaleString());
+        console.log(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    setGlobalEloText(globalElo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+  }, [globalElo]);
   return (
     <>
       <Head>
@@ -15,7 +29,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      buenas
+      <h1>Where is Global Elite in CS2 Premier?</h1>
+      <h3>Global Elite is at {globalEloText} elo</h3>
+      <h5 style={{marginTop: '10px'}}>Last updated: {lastUpdated}</h5>
     </>
   )
 }
