@@ -20,10 +20,9 @@ export async function updateDB(content) {
     const calculatedElos = calculateElos(content, csgo);
     writeDBFile("current_data", {eloPerRank: calculatedElos});
 
-    const CSGO_DATA = await readDBFile('csgo_rank_distribution');
-
     let hist = { ...HISTORIC_DATA };
-    hist.historical_global.push({ elo: calculatedElos.global, timestamp: content.timestamp });
+    
+    hist.historical_global = [{ elo: calculatedElos.global, timestamp: content.timestamp }].concat(hist.historical_global);
     writeDBFile("historical_data", hist);
 }
 
