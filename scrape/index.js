@@ -9,6 +9,8 @@ async function scrape(url) {
 
 async function run(url) { 
     const $ = url ? await scrape(url) : null;
+
+    console.log($);
     
     const graph = $(".graph")[0];
 
