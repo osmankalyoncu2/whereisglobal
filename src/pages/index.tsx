@@ -1,3 +1,4 @@
+import { apiGET } from '@/utils/apiUtils';
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
 
@@ -8,9 +9,8 @@ export default function Home() {
   const [lastUpdated, setLastUpdated] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/global')
-      .then((response) => response.json())
-      .then((data) => {
+    apiGET('global')
+      .then((data: any) => {
         setGlobalElo(data.elo);
         setLastUpdated(new Date(parseInt(data.timestamp)).toLocaleString());
         console.log(data);
