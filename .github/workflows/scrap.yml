@@ -8,7 +8,7 @@ on:
       - webhook
 
   schedule:
-    - cron: '56 3 * * *'
+    - cron: '0 9 * * *'
 
 jobs:
   build:
