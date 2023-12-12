@@ -4,14 +4,17 @@ import { updateDB } from '../db/index.js'
 async function scrape(url) {
     const res = await fetch(url);
     const html = await res.text();
-    return cheerio.load(html);
+    console.log(html);
+
+    const obj = await cheerio.load(html);
+    return obj;
 }
 
 async function run(url) { 
     const $ = url ? await scrape(url) : null;
 
     
-    const graph = $(".graph")._root[0];
+    const graph = $(".graph")[0];
     console.log(graph);
 
     let content = {timestamp: Date.now(), "elos": []};
