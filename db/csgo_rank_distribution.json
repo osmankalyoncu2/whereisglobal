@@ -1,0 +1,97 @@
+{
+  "unranked": {
+    "name": "Unranked",
+    "dist": 5.15,
+    "acc": 100
+  },
+  "silver1": {
+    "name": "Silver I",
+    "dist": 3.9,
+    "acc": 94.85
+  },
+  "silver2": {
+    "name": "Silver II",
+    "dist": 4.23,
+    "acc": 90.95
+  },
+  "silver3": {
+    "name": "Silver III",
+    "dist": 4.37,
+    "acc": 86.72
+  },
+  "silver4": {
+    "name": "Silver IV",
+    "dist": 5.21,
+    "acc": 82.35
+  },
+  "silver5": {
+    "name": "Silver Elite",
+    "dist": 6.44,
+    "acc": 77.14
+  },
+  "silver6": {
+    "name": "Silver Elite Master",
+    "dist": 7.78,
+    "acc": 70.7
+  },
+  "nova1": {
+    "name": "Gold Nova I",
+    "dist": 8.76,
+    "acc": 62.92
+  },
+  "nova2": {
+    "name": "Gold Nova II",
+    "dist": 8.79,
+    "acc": 54.16
+  },
+  "nova3": {
+    "name": "Gold Nova III",
+    "dist": 3.9,
+    "acc": 45.37
+  },
+  "nova4": {
+    "name": "Gold Nova Master",
+    "dist": 8.08,
+    "acc": 41.47
+  },
+  "mg1": {
+    "name": "Master Guardian I",
+    "dist": 7.55,
+    "acc": 33.39
+  },
+  "mg2": {
+    "name": "Master Guardian II",
+    "dist": 6.61,
+    "acc": 25.84
+  },
+  "mgelite": {
+    "name": "Master Guardian Elite",
+    "dist": 5.24,
+    "acc": 19.23
+  },
+  "dmg": {
+    "name": "Distinguished Master Guardian",
+    "dist": 4.15,
+    "acc": 13.99
+  },
+  "eagle": {
+    "name": "Legendary Eagle",
+    "dist": 3.25,
+    "acc": 9.84
+  },
+  "eaglemaster": {
+    "name": "Legendary Eagle Master",
+    "dist": 3.2,
+    "acc": 6.59
+  },
+  "supreme": {
+    "name": "Supreme Master First Class",
+    "dist": 2.64,
+    "acc": 3.39
+  },
+  "global": {
+    "name": "Global Elite",
+    "dist": 0.75,
+    "acc": 0.75
+  }
+}
