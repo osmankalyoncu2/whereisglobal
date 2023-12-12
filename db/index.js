@@ -7,9 +7,9 @@ export function readDBFile(dbName) {
     return readFile(`${DB_PATH}/${dbName}.json`, 'utf-8').then(JSON.parse);
 }
 
-    const CURRENT_DATA = await readDBFile('current_data');
-    const HISTORICAL_DATA = await readDBFile('historical_data');
-    const CSGO_DATA = await readDBFile('csgo_rank_distribution');
+export const CURRENT_DATA = await readDBFile('current_data');
+export const HISTORICAL_DATA = await readDBFile('historical_data');
+export const CSGO_DATA = await readDBFile('csgo_rank_distribution');
 
 export function writeDBFile(dbName, data) {
     return writeFile(`${DB_PATH}/${dbName}.json`, JSON.stringify(data, null, 2), 'utf-8');
