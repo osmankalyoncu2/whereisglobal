@@ -1,9 +1,9 @@
-import * as cheerio from 'cheerio'
-import { updateDB } from '../db/index.js'
+import * as cheerio from 'cheerio';
+import { updateDB } from '../db/index.js';
+import puppeteer from 'puppeteer';
 
 async function scrape(url) {
-    const res = await fetch(url);
-    const html = await res.text();
+    const html = await pup(url);
     console.log(html);
 
     const obj = await cheerio.load(html);
@@ -12,7 +12,6 @@ async function scrape(url) {
 
 async function run(url) { 
     const $ = url ? await scrape(url) : null;
-
     
     const graph = $(".graph")[0];
     console.log(graph);
@@ -33,4 +32,15 @@ async function run(url) {
     updateDB(content);
 }
 
-run('https://csstats.gg/es/leaderboards');
+async function pup(url) {
+    const browser = await puppeteer.launch({headless: false});
+    const page = await browser.newPage();
+    await page.goto(url);
+    const html = await page.content();
+    console.log(html);
+    await browser.close();
+    return html;
+}
+
+run('https://csstats.gg/leaderboards');
+//run('https://kingsleague.pro/estadisticas/goles/');
