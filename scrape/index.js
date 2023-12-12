@@ -36,7 +36,6 @@ async function pup(url) {
     await page.setUserAgent(ua);
     await page.goto(url);
     const html = await page.content();
-    console.log(html);
     await browser.close();
     return html;
 }
