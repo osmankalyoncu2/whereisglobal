@@ -8,7 +8,7 @@ export function readDBFile(dbName) {
 }
 
 export const CURRENT_DATA = await readDBFile('current_data');
-export const HISTORICAL_DATA = await readDBFile('historical_data');
+export const HISTORIC_DATA = await readDBFile('historical_data');
 export const CSGO_DATA = await readDBFile('csgo_rank_distribution');
 
 export function writeDBFile(dbName, data) {
@@ -22,7 +22,7 @@ export async function updateDB(content) {
 
     const CSGO_DATA = await readDBFile('csgo_rank_distribution');
 
-    let hist = { ...HISTORICAL_DATA };
+    let hist = { ...HISTORIC_DATA };
     hist.historical_global.push({ elo: calculatedElos.global, timestamp: content.timestamp });
     writeDBFile("historical_data", hist);
 }
