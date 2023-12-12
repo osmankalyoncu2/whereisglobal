@@ -23,6 +23,6 @@ jobs:
         run: npm install
       - run: |
           npm run scrape
-          git config user.name CS Stats Bot
+          git config user.name "CS Stats Bot"
           git diff --quiet && git diff --staged --quiet || git commit -am "[BOT] Update CS2 Elo database"
           git push origin main
