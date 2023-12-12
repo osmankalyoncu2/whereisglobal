@@ -4,8 +4,6 @@ import puppeteer from 'puppeteer';
 
 async function scrape(url) {
     const html = await pup(url);
-    console.log(html);
-
     const obj = await cheerio.load(html);
     return obj;
 }
@@ -14,7 +12,6 @@ async function run(url) {
     const $ = url ? await scrape(url) : null;
     
     const graph = $(".graph")[0];
-    console.log(graph);
 
     let content = {timestamp: Date.now(), "elos": []};
 
@@ -33,8 +30,10 @@ async function run(url) {
 }
 
 async function pup(url) {
-    const browser = await puppeteer.launch({headless: false});
+    const browser = await puppeteer.launch({headless: 'new'});
     const page = await browser.newPage();
+    const ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36";
+    await page.setUserAgent(ua);
     await page.goto(url);
     const html = await page.content();
     console.log(html);
