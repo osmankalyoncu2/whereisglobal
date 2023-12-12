@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { STATUS_CODES } from 'http';
+import { CURRENT_DATA } from './../../../db/index';
 
 const methodHandlerMap: { [id: string]: (req: NextApiRequest, res: NextApiResponse) => void } = {
 }
@@ -23,7 +23,5 @@ export default async function handler(
 }
 
 async function post(req: NextApiRequest, res: NextApiResponse) {
-
-
-    return res.status(200).json({ test: "test" });
+    return res.status(200).json(CURRENT_DATA.eloPerRank);
 }
