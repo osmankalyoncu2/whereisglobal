@@ -11,7 +11,7 @@ async function run(url) {
     const $ = url ? await scrape(url) : null;
 
     
-    const graph = $(".graph")[0];
+    const graph = $(".graph");
     console.log(graph);
 
     let content = {timestamp: Date.now(), "elos": []};
