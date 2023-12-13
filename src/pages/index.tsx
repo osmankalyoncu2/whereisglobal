@@ -1,3 +1,4 @@
+import { CS2Elo } from '@/components/cs2-elo';
 import { apiGET } from '@/utils/apiUtils';
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
@@ -30,8 +31,12 @@ export default function Home() {
       </Head>
 
       <h1>Where is Global Elite in CS2 Premier?</h1>
-      <h3>Global Elite is at {globalEloText} elo</h3>
+      <h3>Global Elite is at <CS2Elo eloText={globalEloText} size={0}></CS2Elo></h3>
       <h5 style={{marginTop: '10px'}}>Last updated: {lastUpdated}</h5>
+      <CS2Elo eloText={globalEloText} size={0}></CS2Elo>
+      <CS2Elo eloText={globalEloText} size={1}></CS2Elo>
+      <CS2Elo eloText={globalEloText} size={2}></CS2Elo>
+      <CS2Elo eloText={globalEloText} size={3}></CS2Elo>
     </>
   )
 }
