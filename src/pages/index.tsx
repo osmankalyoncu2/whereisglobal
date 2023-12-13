@@ -1,4 +1,4 @@
-import { CS2Elo } from '@/components/cs2-elo';
+import { CS2EloBadge } from '@/components/cs2-elo-badge';
 import { apiGET } from '@/utils/apiUtils';
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
@@ -40,7 +40,7 @@ export default function Home() {
             {Object.keys(ranks).map((rank, i) => (
               <tr key={i}>
                 <td>{rank}</td>
-                <td><CS2Elo eloText={eloToText(ranks[rank])} size={i == 0 ? 2 : 1}></CS2Elo></td>
+                <td><CS2EloBadge eloText={eloToText(ranks[rank])} size={i == 0 ? 2 : 1}></CS2EloBadge></td>
               </tr>
             ))}
           </tbody>

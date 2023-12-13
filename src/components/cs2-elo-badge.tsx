@@ -5,7 +5,7 @@ type CS2EloProps = {
     size: number
 };
 
-export const CS2Elo = ({eloText, size}: CS2EloProps) => {
+export const CS2EloBadge = ({eloText, size}: CS2EloProps) => {
     
     const [rank, setRank] = useState(0);
 
