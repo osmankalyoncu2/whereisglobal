@@ -16,7 +16,7 @@ export const CS2Elo = ({eloText, size}: CS2EloProps) => {
             fontSize: 13,
             left: '11px',
             top: '-26px',
-            shadow: '1px'
+            shadow: '1px',
         },
         {
             width: '110px',
@@ -24,7 +24,7 @@ export const CS2Elo = ({eloText, size}: CS2EloProps) => {
             fontSize: 26,
             left: '20px',
             top: '-40px',
-            shadow: '2px'
+            shadow: '2px',
         },
         {
             width: '220px',
@@ -32,7 +32,7 @@ export const CS2Elo = ({eloText, size}: CS2EloProps) => {
             fontSize: 52,
             left: '39px',
             top: '-75px',
-            shadow: '3px'
+            shadow: '3px',
         },
         {
             width: '440px',
@@ -40,8 +40,18 @@ export const CS2Elo = ({eloText, size}: CS2EloProps) => {
             fontSize: 104,
             left: '78px',
             top: '-145px',
-            shadow: '5px'
+            shadow: '5px',
         }
+    ];
+
+    const colorMap = [
+        { color: '#b0c3d9', shadow: '#2d435d'},
+        { color: '#8cc6ff', shadow: '#00478c'},
+        { color: '#6a7dff', shadow: '#000e6a'},
+        { color: '#c166ff', shadow: '#3d0066'},
+        { color: '#f03cff', shadow: '#37003c'},
+        { color: '#c166ff', shadow: '#3d0066'},
+        { color: '#c166ff', shadow: '#3d0066'},
     ];
 
     useEffect(() => {
@@ -58,8 +68,8 @@ export const CS2Elo = ({eloText, size}: CS2EloProps) => {
                     left: sizeMap[size].left,
                     top: sizeMap[size].top,
                     lineHeight: '22px',
-                    color: '#c166ff',
-                    textShadow: `${sizeMap[size].shadow} ${sizeMap[size].shadow} #3d0066`,
+                    color: colorMap[rank].color,
+                    textShadow: `${sizeMap[size].shadow} ${sizeMap[size].shadow} ${colorMap[rank].shadow}`,
 
                     font: '.95rem/1.5 Poppins,system-ui,ui-sans-serif,Ubuntu,Open Sans,Segoe UI Variable,Segoe UI,Roboto,Calibri,Helvetica Neue,Arial,sans-serif',
                     fontStyle: 'italic',
@@ -67,7 +77,7 @@ export const CS2Elo = ({eloText, size}: CS2EloProps) => {
                 }} 
             >
                 <span style={{fontSize: sizeMap[size].fontSize + 'px'}}>
-                    {eloText.split(',')[0]},
+                    {eloText == "0" ? '---' : `${eloText.split(',')[0]},`}
                 </span>
                 <span style={{fontSize: (sizeMap[size].fontSize*0.7) + 'px'}}>
                     {eloText.split(',')[1]}

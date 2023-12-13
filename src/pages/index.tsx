@@ -5,22 +5,22 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
   
-  const [globalElo, setGlobalElo] = useState(0);
-  const [globalEloText, setGlobalEloText] = useState("");
   const [lastUpdated, setLastUpdated] = useState('');
+  const [ranks, setRanks] = useState<{ [key: string]: number }>({});
 
   useEffect(() => {
-    apiGET('global')
+    apiGET('ranks')
       .then((data: any) => {
-        setGlobalElo(data.elo);
+        setRanks(data.eloPerRank);
         setLastUpdated(new Date(parseInt(data.timestamp)).toLocaleString());
         console.log(data);
       });
   }, []);
 
-  useEffect(() => {
-    setGlobalEloText(globalElo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-  }, [globalElo]);
+  const eloToText = (elo: number) => {
+    return elo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   return (
     <>
       <Head>
@@ -30,13 +30,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Where is Global Elite in CS2 Premier?</h1>
-      <h3>Global Elite is at <CS2Elo eloText={globalEloText} size={0}></CS2Elo></h3>
       <h5 style={{marginTop: '10px'}}>Last updated: {lastUpdated}</h5>
-      <CS2Elo eloText={globalEloText} size={0}></CS2Elo>
-      <CS2Elo eloText={globalEloText} size={1}></CS2Elo>
-      <CS2Elo eloText={globalEloText} size={2}></CS2Elo>
-      <CS2Elo eloText={globalEloText} size={3}></CS2Elo>
+      
+      <div style={{marginTop: '20px'}}>
+        <table style={{width: '100%'}}>
+          <thead>
+          </thead>
+          <tbody>
+            {Object.keys(ranks).map((rank, i) => (
+              <tr key={i}>
+                <td>{rank}</td>
+                <td><CS2Elo eloText={eloToText(ranks[rank])} size={i == 0 ? 2 : 1}></CS2Elo></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   )
 }

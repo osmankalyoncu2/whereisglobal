@@ -23,5 +23,5 @@ export default async function handler(
 }
 
 async function post(req: NextApiRequest, res: NextApiResponse) {
-    return res.status(200).json(CURRENT_DATA.eloPerRank);
+    return res.status(200).json(CURRENT_DATA);
 }
