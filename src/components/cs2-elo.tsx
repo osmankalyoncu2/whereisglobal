@@ -10,10 +10,38 @@ export const CS2Elo = ({eloText, size}: CS2EloProps) => {
     const [rank, setRank] = useState(0);
 
     const sizeMap = [
-        { width: '55px', height: '22px', fontSize: 13, left: '11px', top: '-26px' },
-        { width: '110px', height: '44px', fontSize: 26, left: '20px', top: '-40px' },
-        { width: '220px', height: '88px', fontSize: 52, left: '39px', top: '-75px' },
-        { width: '440px', height: '176px', fontSize: 104, left: '78px', top: '-145px' }
+        {
+            width: '55px',
+            height: '22px',
+            fontSize: 13,
+            left: '11px',
+            top: '-26px',
+            shadow: '1px'
+        },
+        {
+            width: '110px',
+            height: '44px',
+            fontSize: 26,
+            left: '20px',
+            top: '-40px',
+            shadow: '2px'
+        },
+        {
+            width: '220px',
+            height: '88px',
+            fontSize: 52,
+            left: '39px',
+            top: '-75px',
+            shadow: '3px'
+        },
+        {
+            width: '440px',
+            height: '176px',
+            fontSize: 104,
+            left: '78px',
+            top: '-145px',
+            shadow: '5px'
+        }
     ];
 
     useEffect(() => {
@@ -31,7 +59,7 @@ export const CS2Elo = ({eloText, size}: CS2EloProps) => {
                     top: sizeMap[size].top,
                     lineHeight: '22px',
                     color: '#c166ff',
-                    textShadow: '1px 1px #3d0066',
+                    textShadow: `${sizeMap[size].shadow} ${sizeMap[size].shadow} #3d0066`,
 
                     font: '.95rem/1.5 Poppins,system-ui,ui-sans-serif,Ubuntu,Open Sans,Segoe UI Variable,Segoe UI,Roboto,Calibri,Helvetica Neue,Arial,sans-serif',
                     fontStyle: 'italic',
