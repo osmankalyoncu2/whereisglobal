@@ -39,8 +39,8 @@ export default function Home() {
           <tbody>
             {Object.keys(ranks).map((rank, i) => (
               <tr key={i}>
-                <td>{rank}</td>
-                <td><CS2EloBadge eloText={eloToText(ranks[rank])} size={i == 0 ? 2 : 1}></CS2EloBadge></td>
+                <td style={{ float: 'right', padding: '10px', paddingBottom: i == 0 ? '100px' : '10px' }}><img src={`matchmaking_${rank}.png`} style={{height: i == 0 ? '176px': '44px'}}></img></td>
+                <td style={{padding: '10px', paddingBottom: i == 0 ? '100px' : '10px'}}><CS2EloBadge eloText={eloToText(ranks[rank])} size={i == 0 ? 3 : 1}></CS2EloBadge></td>
               </tr>
             ))}
           </tbody>
