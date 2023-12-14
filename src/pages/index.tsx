@@ -5,20 +5,24 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
   
-  const [lastUpdated, setLastUpdated] = useState('');
+  const [lastUpdated, setLastUpdated] = useState<Date>();
   const [ranks, setRanks] = useState<{ [key: string]: number }>({});
 
   useEffect(() => {
     apiGET('ranks')
       .then((data: any) => {
         setRanks(data.eloPerRank);
-        setLastUpdated(new Date(parseInt(data.timestamp)).toLocaleString());
+        setLastUpdated(new Date(parseInt(data.timestamp)));
         console.log(data);
       });
   }, []);
 
   const eloToText = (elo: number) => {
     return elo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  const formatTime = (time: Date): string => {
+    return `${time.getDate()}/${time.getMonth() + 1}/${time.getFullYear()}`;
   }
 
   return (
@@ -32,7 +36,7 @@ export default function Home() {
 
       
       <div style={{marginTop: '170px'}}>
-        <h4 style={{ marginBottom: '10px', color: "#888297", textAlign: 'center'}}>Last updated: {lastUpdated}</h4>
+        <h4 style={{ marginBottom: '10px', color: "#888297", textAlign: 'center'}}>Last updated: {lastUpdated ? formatTime(lastUpdated) : 'Loading ...'}</h4>
         <table style={{width: '100%'}}>
           <thead>
           </thead>
