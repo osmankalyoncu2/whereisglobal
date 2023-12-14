@@ -30,17 +30,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h5 style={{marginTop: '10px'}}>Last updated: {lastUpdated}</h5>
       
-      <div style={{marginTop: '20px'}}>
+      <div style={{marginTop: '170px'}}>
+        <h4 style={{ marginBottom: '10px', color: "#888297", textAlign: 'center'}}>Last updated: {lastUpdated}</h4>
         <table style={{width: '100%'}}>
           <thead>
           </thead>
           <tbody>
             {Object.keys(ranks).map((rank, i) => (
               <tr key={i}>
-                <td style={{ float: 'right', padding: '10px', paddingBottom: i == 0 ? '100px' : '10px' }}><img src={`matchmaking_${rank}.png`} style={{height: i == 0 ? '176px': '44px'}}></img></td>
-                <td style={{padding: '10px', paddingBottom: i == 0 ? '100px' : '10px'}}><CS2EloBadge eloText={eloToText(ranks[rank])} size={i == 0 ? 3 : 1}></CS2EloBadge></td>
+                <td style={{ float: 'right', padding: '10px', paddingTop: '12px', paddingBottom: i == 0 ? '130px' : '10px' }}><img src={`matchmaking_${rank}.png`} style={{height: i == 0 ? '176px': '44px'}}></img></td>
+                <td style={{padding: '10px', paddingBottom: i == 0 ? '180px' : '10px'}}><CS2EloBadge eloText={eloToText(ranks[rank])} size={i == 0 ? 3 : 1}></CS2EloBadge></td>
               </tr>
             ))}
           </tbody>
