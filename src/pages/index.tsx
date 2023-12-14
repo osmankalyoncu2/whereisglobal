@@ -22,7 +22,9 @@ export default function Home() {
   }
 
   const formatTime = (time: Date): string => {
-    return `${time.getDate()}/${time.getMonth() + 1}/${time.getFullYear()}`;
+    const day = time.getDate() < 10 ? `0${time.getDate()}` : time.getDate();
+    const month = time.getMonth() + 1 < 10 ? `0${time.getMonth() + 1}` : time.getMonth() + 1;
+    return `${day}/${month}/${time.getFullYear()}`;
   }
 
   return (
@@ -36,7 +38,7 @@ export default function Home() {
 
       
       <div style={{marginTop: '170px'}}>
-        <h4 style={{ marginBottom: '10px', color: "#888297", textAlign: 'center'}}>Last updated: {lastUpdated ? formatTime(lastUpdated) : 'Loading ...'}</h4>
+        <h4 style={{ fontFamily: 'Consolas, monaco, monospace !important', marginBottom: '10px', color: "#888297", textAlign: 'center'}}>Last updated: {lastUpdated ? formatTime(lastUpdated) : 'Loading ...'}</h4>
         <table style={{width: '100%'}}>
           <thead>
           </thead>
@@ -50,6 +52,9 @@ export default function Home() {
           </tbody>
         </table>
       </div>
+      <footer style={{ fontFamily: 'Consolas, monaco, monospace !important', padding: "5px", paddingRight: '20px', textAlign: 'right' }}>
+        <span>Made with <span style={{color: 'red'}}>&lt;3</span> by <a href="https://github.com/estevE11">Roger Esteve</a></span>
+      </footer>
     </>
   )
 }
