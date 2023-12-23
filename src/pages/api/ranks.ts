@@ -3,7 +3,7 @@ import { CURRENT_DATA } from './../../../db/index';
 
 const methodHandlerMap: { [id: string]: (req: NextApiRequest, res: NextApiResponse) => void } = {
 }
-methodHandlerMap["get"] = post;
+methodHandlerMap["get"] = get;
 
 export default async function handler(
     req: NextApiRequest,
@@ -22,6 +22,6 @@ export default async function handler(
     return methodHandlerMap[method](req, res);
 }
 
-async function post(req: NextApiRequest, res: NextApiResponse) {
+async function get(req: NextApiRequest, res: NextApiResponse) {
     return res.status(200).json(CURRENT_DATA);
 }
