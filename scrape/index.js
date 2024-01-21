@@ -19,7 +19,12 @@ async function run(url) {
     let acc = 0;
     graph.children.forEach((child, index) => {
         if (child.attribs && child.attribs.class.split(' ')[0] == 'rating-range') {
-            const percent = child.children[1].attribs.title;
+            if (elo == 0) {
+                content.elos.push({ elo: elo * 1000, percent: 0, acc: 100 });
+                elo++;
+                return;
+            }
+            const percent = child.children[1].children[0].children[1].children[1].children[0].data;
             content.elos.push({ elo: elo * 1000, percent: parseFloat(percent.substring(0, percent.length-1)), acc: parseFloat((100-acc).toFixed(2)) });
             elo++;
             acc += parseFloat(percent.substring(0, percent.length-1));
