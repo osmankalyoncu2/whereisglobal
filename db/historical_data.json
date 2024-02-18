@@ -1,6 +1,10 @@
 {
   "historical_global": [
     {
+      "elo": 22341,
+      "timestamp": 1708217919129
+    },
+    {
       "elo": 22400,
       "timestamp": 1707613169476
     },
